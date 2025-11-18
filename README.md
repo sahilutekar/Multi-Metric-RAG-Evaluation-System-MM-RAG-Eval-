@@ -1,4 +1,3 @@
-# Multi-Metric-RAG-Evaluation-System-MM-RAG-Eval
 Optimized RAG Hyperparameter Evaluation Pipeline
 
 A memory-efficient pipeline to evaluate Retrieval-Augmented Generation (RAG) models across multiple hyperparameters (temperature, chunk size, context window) while avoiding repeated LLM loads. Includes automatic metrics calculation and robustness scoring.
@@ -25,6 +24,4 @@ Aggregates results into a robustness score.
 
 Saves detailed per-question logs and a hyperparameter matrix.
 
-Optional heatmap visualization of robustness by temperature vs. chunk size.
-
-Requirements
+Optional heatmap visualization of robustness by temperature vs. chunk size. 
