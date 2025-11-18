@@ -26,5 +26,9 @@ Saves detailed per-question logs and a hyperparameter matrix.
 
 Optional heatmap visualization of robustness by temperature vs. chunk size. 
 
+In one line:
+
+Load docs → build embeddings → cache indices → load LLM → emulate temperatures → query → evaluate → aggregate → save/visualize results.
+
 
 
