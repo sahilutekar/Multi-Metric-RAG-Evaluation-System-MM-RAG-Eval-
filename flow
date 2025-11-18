@@ -1,0 +1,57 @@
+Optimized RAG Hyperparameter Evaluation Pipeline – Flow
+
+Document Loading
+
+Load PDF files and inline text into Document objects.
+
+Prepare ground-truth answers for evaluation.
+
+Embedding Model Initialization
+
+Initialize a lightweight embedding model (HuggingFaceEmbedding).
+
+Used for semantic similarity calculations (cosine similarity).
+
+Index Building (VectorStoreIndex)
+
+Build and cache an index per chunk size to avoid repeated computations.
+
+The index allows fast retrieval of relevant document chunks for each query.
+
+LLM Initialization
+
+Load a single LLM (LlamaCPP) with the maximum context window.
+
+Reuse it for all hyperparameter runs, saving memory.
+
+Temperature Emulation
+
+Instead of reloading LLM for each temperature, prompt instructions emulate low, medium, high temperatures.
+
+Optional: strict numeric temperature can be used but increases memory/time.
+
+Hyperparameter Sweep
+
+Iterate over temperature, chunk size, and max tokens.
+
+For each combo: query the index, generate answers, and evaluate.
+
+Metrics Evaluation
+
+Compute cosine similarity, ROUGE, BLEU against ground truth.
+
+Classify answers as Yes / Partial / No and hallucination as Low / Medium / High.
+
+Aggregate into a robustness score.
+
+Result Storage & Visualization
+
+Save per-question logs (per_question_details.csv).
+
+Save hyperparameter matrix (hyperparam_matrix_optimized.csv).
+
+Optional heatmap of robustness: temperature vs chunk size.
+
+In one line:
+
+Load docs → build embeddings → cache indices → load LLM → emulate temperatures → query → evaluate → aggregate → save/visualize results.
